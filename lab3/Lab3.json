@@ -1,0 +1,400 @@
+[
+    {
+        "id": "fbca6c58e5338e88",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5a5b0fa10ceb2e75",
+        "type": "inject",
+        "z": "fbca6c58e5338e88",
+        "name": "Початок",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "topic1",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 20,
+        "wires": [
+            [
+                "6e81d49f835bb7d3",
+                "0d42fc7a61b2cd67",
+                "9407bbaa76819c0a",
+                "cebb7ecf75e1cd6a",
+                "b19b20fa6ee46aea",
+                "b52ebcab2a4a3795"
+            ]
+        ]
+    },
+    {
+        "id": "7d416b8775e1d3ec",
+        "type": "debug",
+        "z": "fbca6c58e5338e88",
+        "name": "Debug1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "b19b20fa6ee46aea",
+        "type": "delay",
+        "z": "fbca6c58e5338e88",
+        "name": "delay 4s",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 200,
+        "wires": [
+            [
+                "e87183ec3b434f4b"
+            ]
+        ]
+    },
+    {
+        "id": "cebb7ecf75e1cd6a",
+        "type": "delay",
+        "z": "fbca6c58e5338e88",
+        "name": "delay 3s",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "69e97047e31dd4fc"
+            ]
+        ]
+    },
+    {
+        "id": "9407bbaa76819c0a",
+        "type": "delay",
+        "z": "fbca6c58e5338e88",
+        "name": "delay 2s",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "c1f1aabf50b6079b"
+            ]
+        ]
+    },
+    {
+        "id": "6e81d49f835bb7d3",
+        "type": "delay",
+        "z": "fbca6c58e5338e88",
+        "name": "delay 1s",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "114960a1bf56323f"
+            ]
+        ]
+    },
+    {
+        "id": "0d42fc7a61b2cd67",
+        "type": "change",
+        "z": "fbca6c58e5338e88",
+        "name": "set1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "один",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 20,
+        "wires": [
+            [
+                "7d416b8775e1d3ec"
+            ]
+        ]
+    },
+    {
+        "id": "c1f1aabf50b6079b",
+        "type": "change",
+        "z": "fbca6c58e5338e88",
+        "name": "set3",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "три",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "7d416b8775e1d3ec"
+            ]
+        ]
+    },
+    {
+        "id": "69e97047e31dd4fc",
+        "type": "change",
+        "z": "fbca6c58e5338e88",
+        "name": "set4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "чотири",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "7d416b8775e1d3ec"
+            ]
+        ]
+    },
+    {
+        "id": "e87183ec3b434f4b",
+        "type": "change",
+        "z": "fbca6c58e5338e88",
+        "name": "set5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "п'ять ",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "7d416b8775e1d3ec"
+            ]
+        ]
+    },
+    {
+        "id": "114960a1bf56323f",
+        "type": "change",
+        "z": "fbca6c58e5338e88",
+        "name": "set2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "два",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 80,
+        "wires": [
+            [
+                "7d416b8775e1d3ec"
+            ]
+        ]
+    },
+    {
+        "id": "b52ebcab2a4a3795",
+        "type": "function",
+        "z": "fbca6c58e5338e88",
+        "name": "ДатаЧас",
+        "func": "// створюємо об'єкт типу Date\n//в аргументах пишемо мілісекунди беруться з payload\nvar date1= new Date(msg.payload);\n//відображення дати у вигляді символьного рядку\nmsg.payload = 'Дата початку:' + date1.toLocaleString();\n return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "24e0d9dd4440ae12"
+            ]
+        ]
+    },
+    {
+        "id": "24e0d9dd4440ae12",
+        "type": "debug",
+        "z": "fbca6c58e5338e88",
+        "name": "Debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d27d349fc79ce269",
+        "type": "inject",
+        "z": "fbca6c58e5338e88",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 420,
+        "wires": [
+            [
+                "499b4b5c76d0e6da"
+            ]
+        ]
+    },
+    {
+        "id": "499b4b5c76d0e6da",
+        "type": "NetworkIntf",
+        "z": "fbca6c58e5338e88",
+        "name": "Network Interfaces",
+        "x": 430,
+        "y": 420,
+        "wires": [
+            [
+                "bbd1a16b5ba342fc"
+            ]
+        ]
+    },
+    {
+        "id": "bbd1a16b5ba342fc",
+        "type": "debug",
+        "z": "fbca6c58e5338e88",
+        "name": "msg.payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c148e2d57255fdef",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-os": "0.2.1"
+        }
+    }
+]
