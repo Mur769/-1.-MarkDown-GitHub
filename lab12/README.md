@@ -78,5 +78,24 @@
 
 ![](media/kkk3.png)
 
-не виходить зробити телеграм бота
+![](media/ccvc9.png)
 
+### 10. Виставлення уставок
+
+![](media/bbb4.png)
+
+![](media/jj25.png)
+
+![](media/vvv3.png)
+
+![](media/ttt01.png)
+
+### 11. Отримання плинних значень
+
+![](media/mkl34.png)
+
+![](media/zxcd05.png)
+
+### 12. Тестування чату бота в приватному чаті товариша
+
+![](media/Screenshot_2026-06-02-18-46-21-366_com.iMe.android.jpg)
