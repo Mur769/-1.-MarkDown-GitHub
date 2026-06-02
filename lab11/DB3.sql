@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS `DB3`;
+USE `DB3`;
+DROP TABLE IF EXISTS `tab3`;
+CREATE TABLE `tab3` (
+    `TS` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `devname` VARCHAR(50),
+    `cpuavg` FLOAT,
+    `memory` FLOAT,
+    `status` VARCHAR(50),
+    PRIMARY KEY (`TS`)
+);
+INSERT INTO tab3 (TS, devname, cpuavg, memory, status) VALUES 
+('2026-05-21 09:00:01', 'PLC1', 25.4, 48.2, 'RUN'),
+('2026-05-21 09:00:02', 'PLC2', 67.8, 71.5, 'STOP'),
+('2026-05-21 09:00:03', 'HMI1', 12.1, 35.0, 'RUN'),
+('2026-05-21 09:00:04', 'SCADA1', 54.3, 62.8, 'ALARM'),
+('2026-05-21 09:00:05', 'DB1', 81.7, 90.4, 'RUN');

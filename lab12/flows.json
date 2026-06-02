@@ -1,0 +1,753 @@
+[
+    {
+        "id": "bf8203d240b9b669",
+        "type": "tab",
+        "label": "telegram",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cced4bf9b22a9d47",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b649bcb723665c0b",
+        "type": "gauth",
+        "name": "sa1-494@flash-ascent-498019-j4.iam.gserviceaccount.com"
+    },
+    {
+        "id": "0a49a6fa5fb52503",
+        "type": "telegram bot",
+        "botname": "8943510549:AAE0p4di4fbiYvN8fGQgHQ1orvMwKHxDhCA",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "491589a3f2578b35",
+        "type": "telegram sender",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "bot": "0a49a6fa5fb52503",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 290,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "72b3fc752823abb8",
+        "type": "inject",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"chatId\":\"898653827\",\"type\":\"message\",\"content\":\"Привіт! Я RPI бот.\"}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "491589a3f2578b35"
+            ]
+        ]
+    },
+    {
+        "id": "dc01a36821729a53",
+        "type": "debug",
+        "z": "bf8203d240b9b669",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5ac35da6cec38047",
+        "type": "telegram command",
+        "z": "bf8203d240b9b669",
+        "name": "start",
+        "command": "/start",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "0a49a6fa5fb52503",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 70,
+        "y": 160,
+        "wires": [
+            [
+                "9fcf6d3ba6c52507"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9fcf6d3ba6c52507",
+        "type": "function",
+        "z": "bf8203d240b9b669",
+        "name": "виконати команди",
+        "func": "let txtmsg = \"/start - показати базові команди\\r\\n\";\ntxtmsg += \"/sp - виставлення уставок\\r\\n\";\ntxtmsg += \"/pv - отримання плинних значень\\r\\n\";\ntxtmsg += \"/alm - список активних тривог\\r\\n\";\ntxtmsg += \"/rprt - сформувати звіт\\r\\n\";\ntxtmsg += \"/status - бзначенняб\\r\\n\";\ntxtmsg += \"/alarms - тривогаа\\r\\n\";\nmsg.payload.content = txtmsg;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "74958fe2bbd5fad3"
+            ]
+        ]
+    },
+    {
+        "id": "74958fe2bbd5fad3",
+        "type": "telegram sender",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "bot": "0a49a6fa5fb52503",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "dc01a36821729a53"
+            ]
+        ]
+    },
+    {
+        "id": "0ebb0b3389e4d609",
+        "type": "debug",
+        "z": "bf8203d240b9b669",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e2e194744dc23ca4",
+        "type": "debug",
+        "z": "bf8203d240b9b669",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b15a1ded40c6c980",
+        "type": "telegram receiver",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "bot": "0a49a6fa5fb52503",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": false,
+        "handleprocessupdates": false,
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "e2e194744dc23ca4"
+            ],
+            [
+                "0ebb0b3389e4d609"
+            ]
+        ]
+    },
+    {
+        "id": "44c037cc96d7a521",
+        "type": "inject",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 560,
+        "y": 400,
+        "wires": [
+            [
+                "3a14d8e4e8c8e857"
+            ]
+        ]
+    },
+    {
+        "id": "c90b80af87679442",
+        "type": "inject",
+        "z": "bf8203d240b9b669",
+        "name": "1s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 550,
+        "y": 320,
+        "wires": [
+            [
+                "704071733561788f"
+            ]
+        ]
+    },
+    {
+        "id": "42ced21044601a46",
+        "type": "telegram sender",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "bot": "0a49a6fa5fb52503",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 930,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2401cbbe2f1f140d",
+        "type": "debug",
+        "z": "bf8203d240b9b669",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3a14d8e4e8c8e857",
+        "type": "change",
+        "z": "bf8203d240b9b669",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "alm.sp.radHI",
+                "pt": "global",
+                "to": "3",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "704071733561788f",
+        "type": "function",
+        "z": "bf8203d240b9b669",
+        "name": "Alarm",
+        "func": "let rtdb = global.get (\"rtdb\") || {}; \nlet alm = global.get (\"alm\") || { //система тривог \n    state:{radHI:false, valHI:false}, //стан тривог \n    sp: {radHI:10.0, valHI:2.0}     //уставки тривог\n    };\n\nlet almmsg = \"\";\n//умова тривоги активна?\nlet alm_radHI = rtdb.rad > alm.sp.radHI;\nlet alm_valHI = rtdb.val > alm.sp.valHI;\n//якщо тривога тільки активувалася\nif (alm_radHI && !alm.state.radHI) {\n    almmsg += \"Радіани дорвінюють \" + rtdb.rad + \" , що вище зданого значення \" + alm.sp.radHI + \"\\r\\n\";\n}\nif (alm_valHI && !alm.state.valHI) {\n    almmsg += \"Синус дорвінює \" + rtdb.val + \" , що вище зданого значення \" + alm.sp.valHI + \"\\r\\n\"\n}\n//запис у стан тривоги\nalm.state.radHI = alm_radHI;\nalm.state.valHI = alm_valHI;\n//збереження станів тривоги в глобальному контексті\nglobal.set (\"alm\", alm);\n//якщо хоча виникла хоча б одна тривога - відправка повідомлень \nif (almmsg.length > 1) {\n    msg.payload = {\n        chatId: \"898653827\", //тут має бути ваш ідентифікатор\n                   type : 'message', \n                   content : almmsg}\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 320,
+        "wires": [
+            [
+                "42ced21044601a46",
+                "2401cbbe2f1f140d"
+            ]
+        ]
+    },
+    {
+        "id": "32024eb91dd01913",
+        "type": "inject",
+        "z": "bf8203d240b9b669",
+        "name": "trend",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "8cd99436d7568d5f"
+            ]
+        ]
+    },
+    {
+        "id": "dd026dd597986911",
+        "type": "GSheet",
+        "z": "bf8203d240b9b669",
+        "creds": "b649bcb723665c0b",
+        "method": "update",
+        "action": "",
+        "sheet": "1PjoBuCB3DrVh5uSKuw1Ieik7QiZCKeuZlmUPqV3jZkc",
+        "cells": "Аркуш1!A1:BH3",
+        "flatten": false,
+        "name": "",
+        "x": 930,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8cd99436d7568d5f",
+        "type": "function",
+        "z": "bf8203d240b9b669",
+        "name": "наповнення буферу",
+        "func": "let now = new Date ();\nlet trend = flow.get (\"trend\") || [[now.toLocaleString()],[0],[0]];\nlet l = trend[0].length;    //довжина мавису\nlet rad = trend[1][l-1] + Math.PI/5;   \nif (rad>=Math.PI*2) rad=0;//обнуляємо після повного кола\nlet val = Math.sin (rad);   //вираховуємо синус\n//на \"верх\" масиву добавляємо елементи \ntrend[0].push (now.toLocaleString());//дата час\ntrend[1].push (rad);    //радіани\ntrend[2].push (val);    //значення синусу\nif (trend[0].length >60){\n    trend[0].shift ();\n    trend[1].shift ();\n    trend[2].shift ();\n    trend[0].length = 60;//\n    trend[1].length = 60;\n    trend[2].length = 60; \n}\nflow.set (\"trend\", trend);\n//-------------------\nlet rtdb = { //глобальна змінна\n    trend: trend,\n    rad: rad,\n    val: val\n}\nglobal.set (\"rtdb\", rtdb);\n//---------------------\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 260,
+        "wires": [
+            [
+                "dd026dd597986911"
+            ]
+        ]
+    },
+    {
+        "id": "891447c1c1e5d62c",
+        "type": "telegram command",
+        "z": "cced4bf9b22a9d47",
+        "name": "/sp",
+        "command": "/sp",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "0a49a6fa5fb52503",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 50,
+        "y": 60,
+        "wires": [
+            [
+                "7bf20a247178a321"
+            ],
+            [
+                "e3e7a5d5bbed3b2d"
+            ]
+        ]
+    },
+    {
+        "id": "b6a87e898364bdef",
+        "type": "telegram command",
+        "z": "cced4bf9b22a9d47",
+        "name": "/rad",
+        "command": "/rad",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "0a49a6fa5fb52503",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 50,
+        "y": 180,
+        "wires": [
+            [
+                "76c58dee49db5295"
+            ],
+            [
+                "abcdba72b102ae4a"
+            ]
+        ]
+    },
+    {
+        "id": "cf5531ff484b84d4",
+        "type": "telegram command",
+        "z": "cced4bf9b22a9d47",
+        "name": "/val",
+        "command": "/val",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "0a49a6fa5fb52503",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 50,
+        "y": 280,
+        "wires": [
+            [
+                "7292828dc45a6372"
+            ],
+            [
+                "75a001995a7376e1"
+            ]
+        ]
+    },
+    {
+        "id": "7bf20a247178a321",
+        "type": "function",
+        "z": "cced4bf9b22a9d47",
+        "name": "генерування клавіатури",
+        "func": "context.global.keyboard = {pending : true};\nlet opts = {\n    reply_to_message_id: msg.payload.messageId,\n    reply_markup: JSON.stringify({\n        keyboard: [\n            ['/rad'],\n            ['/val'],\n            ['відміна']],\n        \t'resize_keyboard' : true,\n        \t'one_time_keyboard' : true\n    })\n};\nmsg.payload.content = 'Виберіть змінну';\nmsg.payload.options = opts;\nreturn [msg];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 20,
+        "wires": [
+            [
+                "8593fd7eb90db12e"
+            ]
+        ]
+    },
+    {
+        "id": "e3e7a5d5bbed3b2d",
+        "type": "change",
+        "z": "cced4bf9b22a9d47",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "global.keyboard.pending",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 60,
+        "wires": [
+            [
+                "8593fd7eb90db12e"
+            ]
+        ]
+    },
+    {
+        "id": "76c58dee49db5295",
+        "type": "change",
+        "z": "cced4bf9b22a9d47",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "Введіть значення уставки для змінної 'rad'",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "8593fd7eb90db12e"
+            ]
+        ]
+    },
+    {
+        "id": "abcdba72b102ae4a",
+        "type": "change",
+        "z": "cced4bf9b22a9d47",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "alm.sp.radHI",
+                "pt": "global",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "75a001995a7376e1",
+        "type": "change",
+        "z": "cced4bf9b22a9d47",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "alm.sp.valHI",
+                "pt": "global",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7292828dc45a6372",
+        "type": "change",
+        "z": "cced4bf9b22a9d47",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "Введіть значення уставки для змінної 'val'",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "8593fd7eb90db12e"
+            ]
+        ]
+    },
+    {
+        "id": "8593fd7eb90db12e",
+        "type": "telegram sender",
+        "z": "cced4bf9b22a9d47",
+        "name": "",
+        "bot": "0a49a6fa5fb52503",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79e3dd914f3d3fdc",
+        "type": "telegram command",
+        "z": "cced4bf9b22a9d47",
+        "name": "/status",
+        "command": "/status",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "0a49a6fa5fb52503",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 390,
+        "y": 420,
+        "wires": [
+            [
+                "53ec4fdefd977fa7"
+            ],
+            [
+                "53ec4fdefd977fa7"
+            ]
+        ]
+    },
+    {
+        "id": "53ec4fdefd977fa7",
+        "type": "function",
+        "z": "cced4bf9b22a9d47",
+        "name": "function 1",
+        "func": "// Пробуємо прочитати шлях без пробілу і з пробілом, який видно на скріншоті\nconst rad = global.get(\"alm.sp.radHI\") ?? global.get(\" alm.sp.radHI\") ?? 0;\nconst val = global.get(\"alm.sp.valHI\") ?? global.get(\" alm.sp.valHI\") ?? 0;\n\n// Формуємо текст\nlet messageText = \" значення:\\n\";\nmessageText += `Радіація - ${rad}\\n`;\nmessageText += `Радіани - ${val}\\n`;\n\n// Пакуємо для Telegram sender\nmsg.payload = {\n    chatId: msg.payload.chatId,\n    type: \"message\",\n    content: messageText\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 420,
+        "wires": [
+            [
+                "8593fd7eb90db12e"
+            ]
+        ]
+    },
+    {
+        "id": "4c3b5a7b4f68424e",
+        "type": "telegram command",
+        "z": "cced4bf9b22a9d47",
+        "name": "/alarms",
+        "command": "/alarms",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "0a49a6fa5fb52503",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "41c92f568c4227c7"
+            ],
+            [
+                "41c92f568c4227c7"
+            ]
+        ]
+    },
+    {
+        "id": "41c92f568c4227c7",
+        "type": "function",
+        "z": "cced4bf9b22a9d47",
+        "name": "function 2",
+        "func": "// Отримуємо поточні значення датчиків\nconst rad = global.get(\"alm.sp.radHI\") ?? global.get(\" alm.sp.radHI\") ?? 0;\nconst val = global.get(\"alm.sp.valHI\") ?? global.get(\" alm.sp.valHI\") ?? 0;\n\nlet activeAlarms = [];\n\n// Порівнюємо значення з критичними уставками\n// Якщо радіація більша за 10(зміни число на своє, якщо треба)\nif (Number(rad) > 10) {\n    activeAlarms.push(\" Перевищення радіації\");\n}\n\n// Якщо синус (VAL) більший за уставку 2\nif (Number(val) > 2) {\n    activeAlarms.push(\" перевищення синуса \");\n}\n\nlet messageText = \"\";\n\n// Перевірка згідно з ТЗ лабораторної\nif (activeAlarms.length === 0) {\n    messageText = \"Немає активних тривог\";\n} else {\n    // Об'єднуємо тривоги, щоб кожна була з нового рядка\n    messageText = activeAlarms.join(\"\\n\");\n}\n\n// Формуємо payload для Telegram\nmsg.payload = {\n    chatId: msg.payload.chatId,\n    type: \"message\",\n    content: messageText\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 500,
+        "wires": [
+            [
+                "8593fd7eb90db12e"
+            ]
+        ]
+    }
+]

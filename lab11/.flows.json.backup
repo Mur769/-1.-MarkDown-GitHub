@@ -1,0 +1,643 @@
+[
+    {
+        "id": "bf2178c3553ad08a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e7bbf20d7ba96738",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "mysql",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "db2mon_ui_001",
+        "type": "ui-base",
+        "name": "Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "872dbfc073834acc",
+        "type": "ui-theme",
+        "name": "Theme Name",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "db2mon_page_001",
+        "type": "ui-page",
+        "name": "Моніторинг",
+        "ui": "db2mon_ui_001",
+        "path": "/monitoring",
+        "icon": "monitor-dashboard",
+        "layout": "grid",
+        "theme": "872dbfc073834acc",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "db2mon_group_001",
+        "type": "ui-group",
+        "name": "Ресурси ПК",
+        "page": "db2mon_page_001",
+        "width": 12,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ed447e39eea93d5a",
+        "type": "mysql",
+        "z": "bf2178c3553ad08a",
+        "mydb": "e7bbf20d7ba96738",
+        "name": "mysql",
+        "x": 290,
+        "y": 60,
+        "wires": [
+            [
+                "5457febc79a4e3c1"
+            ]
+        ]
+    },
+    {
+        "id": "7efaef9098da7876",
+        "type": "debug",
+        "z": "bf2178c3553ad08a",
+        "name": "payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3e66a31265a748c3",
+        "type": "inject",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "SHOW DATABASES LIKE 'devinfo' ",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "ed447e39eea93d5a"
+            ]
+        ]
+    },
+    {
+        "id": "5457febc79a4e3c1",
+        "type": "switch",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "property": "payload[0][\"Database (devinfo)\"]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "devinfo",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 60,
+        "wires": [
+            [
+                "7efaef9098da7876"
+            ],
+            [
+                "8fb39029b2424b2c"
+            ]
+        ]
+    },
+    {
+        "id": "c3b6b805fd713588",
+        "type": "mysql",
+        "z": "bf2178c3553ad08a",
+        "mydb": "e7bbf20d7ba96738",
+        "name": "mysql",
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "7efaef9098da7876"
+            ]
+        ]
+    },
+    {
+        "id": "81d83f0bdb044f9a",
+        "type": "mysql",
+        "z": "bf2178c3553ad08a",
+        "mydb": "e7bbf20d7ba96738",
+        "name": "mysql",
+        "x": 610,
+        "y": 180,
+        "wires": [
+            [
+                "1646e21afca732c2"
+            ]
+        ]
+    },
+    {
+        "id": "8fb39029b2424b2c",
+        "type": "change",
+        "z": "bf2178c3553ad08a",
+        "name": "запит на створення БД",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "CREATE DATABASE devinfo",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "81d83f0bdb044f9a"
+            ]
+        ]
+    },
+    {
+        "id": "1646e21afca732c2",
+        "type": "change",
+        "z": "bf2178c3553ad08a",
+        "name": "запит на створення таблиць",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "CREATE TABLE devinfo.tab1( \tTS TIMESTAMP NOT NULL DEFAULT current_timestamp(), \tcpuavg FLOAT NULL DEFAULT NULL,     memory FLOAT NULL DEFAULT NULL,       PRIMARY KEY (TS) )",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "c3b6b805fd713588"
+            ]
+        ]
+    },
+    {
+        "id": "3556c77e01a7481f",
+        "type": "inject",
+        "z": "bf2178c3553ad08a",
+        "name": "myuyyy",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "527f28a853564b75",
+                "1f405e05b29cbbf8"
+            ]
+        ]
+    },
+    {
+        "id": "527f28a853564b75",
+        "type": "Memory",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "scale": "Byte",
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "db2mon_mem_change_001",
+                "317dc2227b7371e1"
+            ]
+        ]
+    },
+    {
+        "id": "1f405e05b29cbbf8",
+        "type": "CPUs",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "x": 230,
+        "y": 380,
+        "wires": [
+            [
+                "db2mon_cpu_func_001"
+            ]
+        ]
+    },
+    {
+        "id": "2cbd704d50160847",
+        "type": "debug",
+        "z": "bf2178c3553ad08a",
+        "name": "SQL result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "db2mon_mem_change_001",
+        "type": "change",
+        "z": "bf2178c3553ad08a",
+        "name": "memory %",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.memusage",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "memory",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "db2mon_chart_001",
+                "db2mon_switch_001"
+            ]
+        ]
+    },
+    {
+        "id": "db2mon_cpu_func_001",
+        "type": "function",
+        "z": "bf2178c3553ad08a",
+        "name": "CPU usage %",
+        "func": "// Отримати попередні значення CPU з контексту flow\nvar prev = flow.get(\"prev_cpu\");\nvar cpus = msg.payload.cpus;\nif (!Array.isArray(cpus)) {\n    return null;\n}\nif (!prev || !prev.payload || !Array.isArray(prev.payload.cpus) || prev.payload.cpus.length !== cpus.length) {\n    flow.set(\"prev_cpu\", msg);\n    return null;\n}\n\nvar cpusp = prev.payload.cpus;\nvar msgs = [];\nvar avg = 0;\n\nfor (let i = 0; i < cpus.length; i++) {\n    var times = cpus[i].times;\n    var prevTimes = cpusp[i].times;\n    var user = times.user - prevTimes.user;\n    var nice = times.nice - prevTimes.nice;\n    var sys = times.sys - prevTimes.sys;\n    var irq = times.irq - prevTimes.irq;\n    var idle = times.idle - prevTimes.idle;\n    var total = user + nice + sys + irq + idle;\n    var usage = total > 0 ? ((total - idle) * 100 / total) : 0;\n    usage = Number(usage.toFixed(2));\n    avg += usage;\n}\n\navg = Number((avg / cpus.length).toFixed(2));\nmsgs.push({ payload: avg, topic: \"avg\" });\n\nflow.set(\"prev_cpu\", msg);\nreturn [msgs];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 380,
+        "wires": [
+            [
+                "db2mon_chart_001",
+                "db2mon_switch_001",
+                "6d7fb314ac2b5231"
+            ]
+        ]
+    },
+    {
+        "id": "db2mon_chart_001",
+        "type": "ui-chart",
+        "z": "bf2178c3553ad08a",
+        "group": "db2mon_group_001",
+        "name": "",
+        "label": "CPU / Memory, %",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "{HH}:{mm}:{ss}",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "%",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "100",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 2,
+        "showLegend": true,
+        "removeOlder": 10,
+        "removeOlderUnit": "60",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff7f0e",
+            "#2ca02c",
+            "#d62728",
+            "#9467bd",
+            "#8c564b",
+            "#e377c2",
+            "#7f7f7f",
+            "#bcbd22"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 12,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 630,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db2mon_switch_001",
+        "type": "switch",
+        "z": "bf2178c3553ad08a",
+        "name": "topics to text",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "memory",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "avg",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 610,
+        "y": 380,
+        "wires": [
+            [
+                "db2mon_text_000"
+            ],
+            [
+                "db2mon_text_001"
+            ]
+        ]
+    },
+    {
+        "id": "db2mon_text_000",
+        "type": "ui-text",
+        "z": "bf2178c3553ad08a",
+        "group": "db2mon_group_001",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "Пам'ять",
+        "format": "{{msg.payload}} %",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 820,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "db2mon_text_001",
+        "type": "ui-text",
+        "z": "bf2178c3553ad08a",
+        "group": "db2mon_group_001",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "CPU avg",
+        "format": "{{msg.payload}} %",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 820,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "317dc2227b7371e1",
+        "type": "change",
+        "z": "bf2178c3553ad08a",
+        "name": "set flow memory",
+        "rules": [
+            {
+                "t": "set",
+                "p": "memory",
+                "pt": "flow",
+                "to": "payload.memusage",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d7fb314ac2b5231",
+        "type": "change",
+        "z": "bf2178c3553ad08a",
+        "name": "set flow.cpuavg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cpuavg",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 460,
+        "wires": [
+            [
+                "91b504fdd0e86095"
+            ]
+        ]
+    },
+    {
+        "id": "e48925f51ce34b04",
+        "type": "mysql",
+        "z": "bf2178c3553ad08a",
+        "mydb": "e7bbf20d7ba96738",
+        "name": "mysql-> devinfo.tab1",
+        "x": 700,
+        "y": 520,
+        "wires": [
+            [
+                "2cbd704d50160847"
+            ]
+        ]
+    },
+    {
+        "id": "91b504fdd0e86095",
+        "type": "function",
+        "z": "bf2178c3553ad08a",
+        "name": "function 1",
+        "func": "var mem = flow.get(\"memory\");\nvar cpuavg = flow.get(\"cpuavg\");\nif (mem === undefined || cpuavg === undefined) {\n    return null;\n}\nmsg.topic = \"INSERT INTO devinfo.tab1(cpuavg, memory) VALUES (?, ?)\";\nmsg.payload = [cpuavg, mem];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 460,
+        "wires": [
+            [
+                "e48925f51ce34b04"
+            ]
+        ]
+    }
+]
