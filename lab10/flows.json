@@ -1,0 +1,341 @@
+[
+    {
+        "id": "bf2178c3553ad08a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "db2mon_ui_001",
+        "type": "ui-base",
+        "name": "Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "872dbfc073834acc",
+        "type": "ui-theme",
+        "name": "Theme Name",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "db2mon_page_001",
+        "type": "ui-page",
+        "name": "група 1",
+        "ui": "db2mon_ui_001",
+        "path": "/monitoring",
+        "icon": "monitor-dashboard",
+        "layout": "grid",
+        "theme": "872dbfc073834acc",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "db2mon_group_001",
+        "type": "ui-group",
+        "name": "Група 1",
+        "page": "db2mon_page_001",
+        "width": "3",
+        "height": "3",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "368f58a77a402dc2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "http://test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "myroslav/client1/status",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "online",
+        "birthMsg": {},
+        "closeTopic": "myroslav/client1/status",
+        "closeQos": "1",
+        "closeRetain": "true",
+        "closePayload": "online",
+        "closeMsg": {},
+        "willTopic": "myroslav/client1/status",
+        "willQos": "1",
+        "willRetain": "true",
+        "willPayload": "offline (break)",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "eb74a46acedd5179",
+        "type": "mqtt in",
+        "z": "bf2178c3553ad08a",
+        "name": "NUFT T14/Variant25/#",
+        "topic": "NUFT T14/Variant25/#",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "368f58a77a402dc2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "831b1ce624a54aa5"
+            ]
+        ]
+    },
+    {
+        "id": "831b1ce624a54aa5",
+        "type": "debug",
+        "z": "bf2178c3553ad08a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c48dd6de9bfd3a7a",
+        "type": "mqtt out",
+        "z": "bf2178c3553ad08a",
+        "name": "NUFT T14/Variant25/101",
+        "topic": "NUFT T14/Variant25/TT101",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "368f58a77a402dc2",
+        "x": 830,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0947d4ac460b900a",
+        "type": "inject",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "c0656ea42c915ebc"
+            ]
+        ]
+    },
+    {
+        "id": "c0656ea42c915ebc",
+        "type": "function",
+        "z": "bf2178c3553ad08a",
+        "name": "sin",
+        "func": "var a;\na = msg.payload/10000;\nmsg.payload = (Math.sin (a) + 1.0)*25.0 + 25\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "f8cb597bfaa543f4"
+            ]
+        ]
+    },
+    {
+        "id": "e7ca649eef37d8d9",
+        "type": "ui-gauge",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "group": "db2mon_group_001",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "0",
+        "height": "0",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "70",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 870,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f8cb597bfaa543f4",
+        "type": "ui-slider",
+        "z": "bf2178c3553ad08a",
+        "group": "db2mon_group_001",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "order": 1,
+        "width": "3",
+        "height": "2",
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "always",
+        "showTicks": "false",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "c48dd6de9bfd3a7a"
+            ]
+        ]
+    },
+    {
+        "id": "be4ddf9504122f0e",
+        "type": "mqtt in",
+        "z": "bf2178c3553ad08a",
+        "name": "",
+        "topic": "NUFT T14/Variant25/Klapan",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "368f58a77a402dc2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "e7ca649eef37d8d9"
+            ]
+        ]
+    }
+]
